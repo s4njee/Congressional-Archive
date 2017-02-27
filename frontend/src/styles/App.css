@@ -1,0 +1,64 @@
+/* Base Application Styles */
+body {
+  color: #fff;
+  background: #222;
+}
+
+.index img {
+  margin: 40px auto;
+  border-radius: 4px;
+  background: #fff;
+  display: block;
+}
+
+.index .notice {
+  margin: 20px auto;
+  padding: 15px 0;
+  text-align: center;
+  border: 1px solid #000;
+  border-width: 1px 0;
+  background: #666;
+}
+span{
+    display:flex;
+    justify-content:center;
+    text-align:center;
+    margin-bottom:10px;
+}
+span a
+{
+    margin-right:20px;
+    font-size:24px;
+}
+a:link, a:visited{
+    color:#7191ad!important;
+    text-decoration:none;
+}
+.title{
+    display:flex;
+    justify-content:center;
+    text-align:center;
+}
+.billLink{
+    margin-right:15px;
+}
+.bill{
+    display:inline-flex!important;
+    flex-direction:column;
+}
+.bill h2{
+    margin-left:10px;
+    margin-right:10px;
+}
+a.active, a:focus, a:hover{
+    color:#374a5a!important;
+}
+h2{
+    margin:20px 0 0 0;
+}
+h4{
+    margin: 0 10px 0 10px;
+}
+.billLink{
+    margin: 0 10px 0 10px;;
+}
