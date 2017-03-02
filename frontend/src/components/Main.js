@@ -1,8 +1,6 @@
 require('normalize.css/normalize.css');
 require('styles/App.css');
 var axios = require('axios');
-import ReactDOM from "react-dom";
-import spdf from "simple-react-pdf";
 import React from 'react';
 
 class AppComponent extends React.Component {
@@ -61,9 +59,15 @@ class AppComponent extends React.Component {
             break;
         }
         let r;
-        axios.get('http://localhost:8080/'+dbTranslated+'/'+event).then(function(response) {
+
+            
+
+axios.get('http://cb.s4njee.com:8080/'+dbTranslated+'/'+event).then(function(response) {
             r =  response.data.map(item=>{
-            var billid = item.bill_version_id;
+
+                
+            var billt = item.bill_version_id;
+            billt = billt.split("-")[0];                
             var issuedOn = item.issued_on;
             var version_code = item.version_code
                 item.urls = JSON.parse(item.urls);
@@ -71,17 +75,21 @@ class AppComponent extends React.Component {
             var pdf = item.urls ? item.urls.pdf:''
             return(
                 <div className="bill">
-                    <h2>{billid}</h2>
+                    <h2>{billt}</h2>
                     <h4>{issuedOn} - {version_code}</h4>
                     <a href={html} className="billLink">HTML Link</a>
-                    <a href="#" onClick={context.loadPDF({pdf})} className="billLink">PDF Link</a>
+                    <a href={pdf} className="billLink">PDF Link</a>
                 </div>
             )
-            })
-        context.setState({results:r});
-        })
-        }
-
+                // var billid = item.bill_version_id;
+            }
+            
+            
+            
+            )
+            
+context.setState({results:r});
+})}
 
   render() {
       let sessions = [103,104,105,106,107,108,109,110,111,112,113,114,115];
@@ -93,11 +101,11 @@ class AppComponent extends React.Component {
                   let sessionID = this.submenu.bind(this,item);
                   let years = ['93', '95', '97', '99', '01',' 03', '05', '07', '09', '11', '13', '15', '17', '19'];
                   let offset = item - 103;
-                  return(<a href='#' key={item} onClick={sessionID}><strong>{item}</strong><div><smaller>'{years[offset]} - 
-                      '{years[offset+1]}</smaller></div></a>)
+                  return(<a href='#' key={item} onClick={sessionID}><strong>{item}</strong><div><smaller>'{years[offset]} - '{years[offset+1]}</smaller></div></a>)
               })}
           </span>
             <span>{this.state.resolutions}</span>
+            <div className="sortedDiv"> (Sorted by date)</div>
             <div>{this.state.results}></div>
 
 

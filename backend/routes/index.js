@@ -8,8 +8,7 @@ var db = new sqlite3.Database('./congress.db');
         console.log(congress);
         var billtype = req.params.billtype;
         db.serialize((function(){
-            console.log("SELECT * from "+congress+"WHERE bill_version_id LIKE "+"'"+req.params.billtype+"_%'")
-            db.all("SELECT * from "+congress+" WHERE bill_version_id LIKE "+"'"+req.params.billtype+"_%'" ,function(err,row){
+            db.all("SELECT * from "+congress+" WHERE bill_version_id LIKE "+"'"+req.params.billtype+"_%'"+ " ORDER BY issued_on" ,function(err,row){
             res.json(row);
             });
         }
