@@ -62,7 +62,7 @@ class AppComponent extends React.Component {
 
             
 
-axios.get('http://cb.s4njee.com:8080/'+dbTranslated+'/'+event).then(function(response) {
+axios.get('http://cb.s4njee.com/'+dbTranslated+'/'+event).then(function(response) {
             r =  response.data.map(item=>{
 
                 
